@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Google Fonts ──────────────────────────────────────────────────────── */
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+/* ─── CSS Variables ─────────────────────────────────────────────────────── */
+@layer base {
+  :root {
+    /* Layout */
+    --sidebar-width: 260px;
+    --sidebar-collapsed-width: 68px;
+    --header-height: 60px;
+    --radius: 0.5rem;
+
+    /* Brand — Electric Teal */
+    --brand: 171 100% 41%;
+    --brand-foreground: 0 0% 100%;
+    --brand-muted: 171 40% 20%;
+
+    /* ── Light Mode ────────────────────────────────────────────────────── */
+    --background: 220 20% 97%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 171 100% 35%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 14% 93%;
+    --secondary-foreground: 222 47% 15%;
+
+    --muted: 220 14% 93%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 220 14% 93%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 13% 88%;
+    --input: 220 13% 88%;
+    --ring: 171 100% 35%;
+  }
+
+  .dark {
+    /* ── Dark Mode — Primary palette ─────────────────────────────────── */
+    --background: 222 47% 7%;       /* deep navy #090d1a     */
+    --foreground: 213 31% 91%;      /* soft white            */
+
+    --card: 222 40% 10%;            /* slightly lifted navy  */
+    --card-foreground: 213 31% 91%;
+
+    --popover: 222 40% 12%;
+    --popover-foreground: 213 31% 91%;
+
+    --primary: 171 100% 41%;        /* electric teal #00d4b1 */
+    --primary-foreground: 222 47% 7%;
+
+    --secondary: 222 32% 15%;
+    --secondary-foreground: 213 31% 91%;
+
+    --muted: 222 32% 14%;
+    --muted-foreground: 220 14% 55%;
+
+    --accent: 222 32% 18%;
+    --accent-foreground: 213 31% 91%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 222 32% 18%;
+    --input: 222 32% 18%;
+    --ring: 171 100% 41%;
+  }
+}
+
+/* ─── Base Resets ───────────────────────────────────────────────────────── */
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/40;
+  }
+}
+
+/* ─── Utility Classes ───────────────────────────────────────────────────── */
+@layer utilities {
+  /* Data typography */
+  .font-data {
+    @apply font-mono tabular-nums;
+  }
+
+  /* Card base */
+  .card-base {
+    @apply bg-card border border-border rounded-lg shadow-card;
+  }
+
+  /* Status dot */
+  .status-dot {
+    @apply w-2 h-2 rounded-full inline-block;
+  }
+
+  /* Sidebar gradient separator */
+  .sidebar-sep {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-border to-transparent my-2;
+  }
+
+  /* Shimmer skeleton */
+  .skeleton {
+    @apply bg-gradient-to-r from-muted via-muted/50 to-muted bg-[length:200%_100%] animate-shimmer rounded;
+  }
+
+  /* Live indicator */
+  .live-badge {
+    @apply inline-flex items-center gap-1.5 text-2xs font-mono font-medium uppercase tracking-widest
+           text-primary border border-primary/30 bg-primary/10 px-2 py-0.5 rounded-sm;
+  }
+}
